@@ -1,4 +1,6 @@
 
+import AVKit
+import MediaPlayer
 import AVFoundation
 import UIKit
 
@@ -15,9 +17,10 @@ class PlayerViewController: UIViewController {
     private var visualDuration: CGFloat = 0
     private var swipeLeftGestureRecognizer = UISwipeGestureRecognizer()
     private var swipeRightGestureRecognizer = UISwipeGestureRecognizer()
-    
+    private var player = AVAudioPlayer()
+    private var timer = Timer()
+
     private var songListCollectionView: UICollectionView!
-    private var songBackground = UIView()
     private var mainView = UIView()
     private var lineLabel = UILabel()
     private var progressLineLabel = UILabel()
@@ -28,22 +31,20 @@ class PlayerViewController: UIViewController {
     private var playButton = UIButton()
     private var nextButton = UIButton()
     private var previousButton = UIButton()
-    private var player: AVAudioPlayer?
-    private var timer = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .black
+        view.backgroundColor = averageColor(image: UIImage(named: songs[position].imageName)!)
         setupBackgroundUI()
         setupControlsUI()
         setupAudioInfoUI()
         setupCollectionView()
+        setUpPlayer()
         
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(rotated),
-//                                               name: UIDevice.orientationDidChangeNotification,
-//                                               object: nil)
+        setupRemoteTransportControls()
+        setupNowPlaying()
+        setupAVAudioSession()
         
         timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
@@ -54,14 +55,6 @@ class PlayerViewController: UIViewController {
         songListCollectionView.scrollToItem(at: IndexPath(row: position, section: 0),
                                             at: .centeredHorizontally,
                                             animated: true)
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let player = player {
-            player.stop()
-        }
     }
     
     //MARK: - Actions
@@ -103,12 +96,12 @@ class PlayerViewController: UIViewController {
     }
     
     @objc private func onPlayButton() {
-        if player?.isPlaying == true {
+        if player.isPlaying == true {
             playButton.setImage(UIImage(named: "playButton"), for: .normal)
-            player!.pause()
+            player.pause()
             timer.invalidate()
         } else {
-            player!.play()
+            player.play()
             playButton.setImage(UIImage(named: "pauseButton"), for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 1,
                                          target: self,
@@ -121,49 +114,115 @@ class PlayerViewController: UIViewController {
     @objc private func onNextButton() {
         if position < (songs.count - 1) {
             position = position + 1
-            player?.stop()
-            setupAudioInfoUI()
-            minutes = 0
-            seconds = 0
-            progressLineWidth = 0
         } else {
             position = 0
-            player?.stop()
-            setupAudioInfoUI()
-            minutes = 0
-            seconds = 0
-            progressLineWidth = 0
         }
         songListCollectionView.scrollToItem(at: IndexPath(row: position, section: 0),
                                             at: .centeredHorizontally,
                                             animated: true)
-        songBackground.backgroundColor = averageColor(image: UIImage(named: songs[position].imageName)!)
+        view.backgroundColor = averageColor(image: UIImage(named: songs[position].imageName)!)
+        setupAudioInfoUI()
+        setUpPlayer()
+        setupNowPlaying()
+        
+        minutes = 0
+        seconds = 0
+        progressLineWidth = 0
     }
     
     @objc private func onPreviousButton() {
         if position > 0 {
             position = position - 1
-            player?.stop()
-            setupAudioInfoUI()
-            minutes = 0
-            seconds = 0
-            progressLineWidth = 0
         } else {
             position = (songs.count - 1)
-            player?.stop()
-            setupAudioInfoUI()
-            minutes = 0
-            seconds = 0
-            progressLineWidth = 0
         }
+        
         songListCollectionView.scrollToItem(at: IndexPath(row: position, section: 0),
                                             at: .centeredHorizontally,
                                             animated: true)
-        songBackground.backgroundColor = averageColor(image: UIImage(named: songs[position].imageName)!)
+        view.backgroundColor = averageColor(image: UIImage(named: songs[position].imageName)!)
+        setupAudioInfoUI()
+        setUpPlayer()
+        setupNowPlaying()
+        
+        minutes = 0
+        seconds = 0
+        progressLineWidth = 0
     }
     
     //MARK: - Private Functions
     //MARK: -
+    
+    private func setupAVAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            debugPrint("AVAudioSession is Active and Category Playback is set")
+            UIApplication.shared.beginReceivingRemoteControlEvents()
+        } catch {
+            debugPrint("Error: \(error)")
+        }
+    }
+    
+    func setupRemoteTransportControls() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            print("Play command - is playing: \(self.player.isPlaying)")
+            if !self.player.isPlaying {
+                self.play()
+                return .success
+            }
+            return .commandFailed
+        }
+
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            print("Pause command - is playing: \(self.player.isPlaying)")
+            if self.player.isPlaying {
+                self.pause()
+                return .success
+            }
+            return .commandFailed
+        }
+    }
+
+    func setupNowPlaying() {
+        let song = songs[position]
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = song.trackName
+
+        if let image = UIImage(named: song.imageName) {
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size) { size in
+                return image
+            }
+        }
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = player.duration
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
+
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
+
+    func play() {
+        player.play()
+        updateNowPlaying(isPause: false)
+        print("Play - current time: \(player.currentTime) - is playing: \(player.isPlaying)")
+    }
+
+    func pause() {
+        player.pause()
+        updateNowPlaying(isPause: true)
+        print("Pause - current time: \(player.currentTime) - is playing: \(player.isPlaying)")
+    }
+
+    func updateNowPlaying(isPause: Bool) {
+        var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo!
+
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = isPause ? 0 : 1
+
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
     
     private func setupCollectionView() {
         let layoutFlow = UICollectionViewFlowLayout()
@@ -200,21 +259,8 @@ class PlayerViewController: UIViewController {
     }
     
     private func setupBackgroundUI() {
-        let song = songs[position]
-        songBackground.backgroundColor = averageColor(image: UIImage(named: song.imageName)!)
-        
-        let backgroundWidth: CGFloat = view.bounds.width / 1.3
-        let backgroundHeight: CGFloat = backgroundWidth
-        
-        songBackground.frame = CGRect(x: view.bounds.midX - backgroundWidth / 2,
-                                      y: view.bounds.minY + backgroundHeight / 2.5,
-                                      width: backgroundWidth,
-                                      height: backgroundHeight)
-        view.addSubview(songBackground)
-        
         mainView.frame = view.bounds
         view.addSubview(mainView)
-        
         
         let blur = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blur)
@@ -222,15 +268,6 @@ class PlayerViewController: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainView.addSubview(blurEffectView)
     }
-    
-//    @objc func rotated() {
-//        if UIDevice.current.orientation.isLandscape {
-////            landscape
-//            mainView.frame = view.bounds
-//        } else {
-//// portrait
-//        }
-//    }
     
     private func setupControlsUI() {
         let lineWidth: CGFloat = view.bounds.width / 1.2
@@ -299,32 +336,22 @@ class PlayerViewController: UIViewController {
                            alpha: CGFloat(bitmap[3]) / 255)
     }
     
+    func setUpPlayer() {
+        let song = songs[position]
+        do {
+            let url = Bundle.main.url(forResource: song.trackName, withExtension: "mp3")
+            player = try AVAudioPlayer(contentsOf: url!)
+            player.prepareToPlay()
+        } catch let error as NSError {
+            print("Failed to init audio player: \(error)")
+        }
+        player.play()
+    }
+    
     private func setupAudioInfoUI() {
         
         let song = songs[position]
         let urlString = Bundle.main.path(forResource: song.trackName, ofType: "mp3")
-        
-        do {
-            try AVAudioSession.sharedInstance().setMode(.default)
-            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-
-            guard let urlString = urlString else {
-                print("urlString = nil")
-                return
-            }
-
-            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
-
-            guard let player = player else {
-                print("player is nil")
-                return
-            }
-            player.volume = 0.5
-            player.play()
-            
-        } catch {
-            print("error")
-        }
         
         let labelWidth: CGFloat = lineLabel.bounds.width
         let labelHeight: CGFloat = labelWidth / 12
@@ -332,7 +359,7 @@ class PlayerViewController: UIViewController {
         artistLabel.frame = lineLabel.frame.offsetBy(dx: 0, dy: -60)
         artistLabel.frame.size = CGSize(width: labelWidth, height: labelHeight)
         artistLabel.text = song.artistName
-        artistLabel.textColor = .systemGray
+        artistLabel.textColor = .systemGray5
         mainView.addSubview(artistLabel)
         
         songLabel.frame = artistLabel.frame.offsetBy(dx: 0, dy: -35)
