@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970FDCF428D11F5A00AFDF9B /* MontserratAlternates-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 970FDCF328D11F5A00AFDF9B /* MontserratAlternates-Light.ttf */; };
+		970FDCF628D11F7500AFDF9B /* MontserratAlternates-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 970FDCF528D11F7500AFDF9B /* MontserratAlternates-Black.ttf */; };
 		972F070828D11E02002F2EA3 /* CCR - Fortunate Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 972F070728D11E02002F2EA3 /* CCR - Fortunate Song.mp3 */; };
 		972F070A28D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 972F070928D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 */; };
 		972F070C28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 972F070B28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 */; };
@@ -18,12 +20,12 @@
 		97DE5E6728C34DF2008AA464 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E6628C34DF2008AA464 /* PlayerViewController.swift */; };
 		97DE5E6928C34E06008AA464 /* PlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E6828C34E06008AA464 /* PlayerViewController.storyboard */; };
 		97DE5E6C28C34ECD008AA464 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E6B28C34ECD008AA464 /* ViewController.swift */; };
-		97DE5E7128C4FEE4008AA464 /* MontserratAlternates-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E7028C4FEE4008AA464 /* MontserratAlternates-Black.ttf */; };
-		97DE5E7328C4FEFA008AA464 /* MontserratAlternates-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E7228C4FEFA008AA464 /* MontserratAlternates-Light.ttf */; };
 		97DE5E7528C5FCF9008AA464 /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E7428C5FCF9008AA464 /* SongCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		970FDCF328D11F5A00AFDF9B /* MontserratAlternates-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Light.ttf"; sourceTree = "<group>"; };
+		970FDCF528D11F7500AFDF9B /* MontserratAlternates-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Black.ttf"; sourceTree = "<group>"; };
 		972F070728D11E02002F2EA3 /* CCR - Fortunate Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "CCR - Fortunate Song.mp3"; sourceTree = "<group>"; };
 		972F070928D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eagles - One Of These Nights.mp3"; sourceTree = "<group>"; };
 		972F070B28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Led Zeppelin - Whole Lotta Love.mp3"; sourceTree = "<group>"; };
@@ -37,8 +39,6 @@
 		97DE5E6628C34DF2008AA464 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		97DE5E6828C34E06008AA464 /* PlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerViewController.storyboard; sourceTree = "<group>"; };
 		97DE5E6B28C34ECD008AA464 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		97DE5E7028C4FEE4008AA464 /* MontserratAlternates-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-Black.ttf"; path = "../../../../Downloads/Montserrat_Alternates/MontserratAlternates-Black.ttf"; sourceTree = "<group>"; };
-		97DE5E7228C4FEFA008AA464 /* MontserratAlternates-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-Light.ttf"; path = "../../../../Downloads/Montserrat_Alternates/MontserratAlternates-Light.ttf"; sourceTree = "<group>"; };
 		97DE5E7428C5FCF9008AA464 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,8 +109,8 @@
 		97DE5E6D28C39B8A008AA464 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				97DE5E7028C4FEE4008AA464 /* MontserratAlternates-Black.ttf */,
-				97DE5E7228C4FEFA008AA464 /* MontserratAlternates-Light.ttf */,
+				970FDCF528D11F7500AFDF9B /* MontserratAlternates-Black.ttf */,
+				970FDCF328D11F5A00AFDF9B /* MontserratAlternates-Light.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -176,11 +176,11 @@
 				972F070828D11E02002F2EA3 /* CCR - Fortunate Song.mp3 in Resources */,
 				97DE5E6928C34E06008AA464 /* PlayerViewController.storyboard in Resources */,
 				97DE5E5828C26E14008AA464 /* LaunchScreen.storyboard in Resources */,
+				970FDCF428D11F5A00AFDF9B /* MontserratAlternates-Light.ttf in Resources */,
 				972F070A28D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 in Resources */,
-				97DE5E7328C4FEFA008AA464 /* MontserratAlternates-Light.ttf in Resources */,
 				97DE5E5528C26E14008AA464 /* Assets.xcassets in Resources */,
-				97DE5E7128C4FEE4008AA464 /* MontserratAlternates-Black.ttf in Resources */,
 				97DE5E5328C26E12008AA464 /* Main.storyboard in Resources */,
+				970FDCF628D11F7500AFDF9B /* MontserratAlternates-Black.ttf in Resources */,
 				972F070C28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
