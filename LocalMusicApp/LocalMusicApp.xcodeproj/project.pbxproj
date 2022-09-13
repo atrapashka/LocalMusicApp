@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		972F070828D11E02002F2EA3 /* CCR - Fortunate Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 972F070728D11E02002F2EA3 /* CCR - Fortunate Song.mp3 */; };
+		972F070A28D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 972F070928D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 */; };
+		972F070C28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 972F070B28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 */; };
 		97DE5E4C28C26E12008AA464 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E4B28C26E12008AA464 /* AppDelegate.swift */; };
 		97DE5E4E28C26E12008AA464 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E4D28C26E12008AA464 /* SceneDelegate.swift */; };
 		97DE5E5328C26E12008AA464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E5128C26E12008AA464 /* Main.storyboard */; };
 		97DE5E5528C26E14008AA464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E5428C26E14008AA464 /* Assets.xcassets */; };
 		97DE5E5828C26E14008AA464 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E5628C26E14008AA464 /* LaunchScreen.storyboard */; };
-		97DE5E6328C34CEB008AA464 /* CCR - Fortunate Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E6028C34CEB008AA464 /* CCR - Fortunate Song.mp3 */; };
-		97DE5E6428C34CEB008AA464 /* Eagles - One Of These Nights.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E6128C34CEB008AA464 /* Eagles - One Of These Nights.mp3 */; };
-		97DE5E6528C34CEB008AA464 /* Led Zeppelin - Whole Lotta Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E6228C34CEB008AA464 /* Led Zeppelin - Whole Lotta Love.mp3 */; };
 		97DE5E6728C34DF2008AA464 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E6628C34DF2008AA464 /* PlayerViewController.swift */; };
 		97DE5E6928C34E06008AA464 /* PlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97DE5E6828C34E06008AA464 /* PlayerViewController.storyboard */; };
 		97DE5E6C28C34ECD008AA464 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DE5E6B28C34ECD008AA464 /* ViewController.swift */; };
@@ -24,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		972F070728D11E02002F2EA3 /* CCR - Fortunate Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "CCR - Fortunate Song.mp3"; sourceTree = "<group>"; };
+		972F070928D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eagles - One Of These Nights.mp3"; sourceTree = "<group>"; };
+		972F070B28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Led Zeppelin - Whole Lotta Love.mp3"; sourceTree = "<group>"; };
 		97DE5E4828C26E12008AA464 /* LocalMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DE5E4B28C26E12008AA464 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97DE5E4D28C26E12008AA464 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,9 +34,6 @@
 		97DE5E5428C26E14008AA464 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97DE5E5728C26E14008AA464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97DE5E5928C26E14008AA464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97DE5E6028C34CEB008AA464 /* CCR - Fortunate Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "CCR - Fortunate Song.mp3"; path = "../../../../Downloads/CCR - Fortunate Song.mp3"; sourceTree = "<group>"; };
-		97DE5E6128C34CEB008AA464 /* Eagles - One Of These Nights.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Eagles - One Of These Nights.mp3"; path = "../../../../Downloads/Eagles - One Of These Nights.mp3"; sourceTree = "<group>"; };
-		97DE5E6228C34CEB008AA464 /* Led Zeppelin - Whole Lotta Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Led Zeppelin - Whole Lotta Love.mp3"; path = "../../../../Downloads/Led Zeppelin - Whole Lotta Love.mp3"; sourceTree = "<group>"; };
 		97DE5E6628C34DF2008AA464 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		97DE5E6828C34E06008AA464 /* PlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerViewController.storyboard; sourceTree = "<group>"; };
 		97DE5E6B28C34ECD008AA464 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,9 +90,9 @@
 		97DE5E5F28C34CCB008AA464 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				97DE5E6028C34CEB008AA464 /* CCR - Fortunate Song.mp3 */,
-				97DE5E6128C34CEB008AA464 /* Eagles - One Of These Nights.mp3 */,
-				97DE5E6228C34CEB008AA464 /* Led Zeppelin - Whole Lotta Love.mp3 */,
+				972F070728D11E02002F2EA3 /* CCR - Fortunate Song.mp3 */,
+				972F070B28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 */,
+				972F070928D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -173,15 +173,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972F070828D11E02002F2EA3 /* CCR - Fortunate Song.mp3 in Resources */,
 				97DE5E6928C34E06008AA464 /* PlayerViewController.storyboard in Resources */,
 				97DE5E5828C26E14008AA464 /* LaunchScreen.storyboard in Resources */,
-				97DE5E6428C34CEB008AA464 /* Eagles - One Of These Nights.mp3 in Resources */,
+				972F070A28D11E17002F2EA3 /* Eagles - One Of These Nights.mp3 in Resources */,
 				97DE5E7328C4FEFA008AA464 /* MontserratAlternates-Light.ttf in Resources */,
 				97DE5E5528C26E14008AA464 /* Assets.xcassets in Resources */,
-				97DE5E6328C34CEB008AA464 /* CCR - Fortunate Song.mp3 in Resources */,
 				97DE5E7128C4FEE4008AA464 /* MontserratAlternates-Black.ttf in Resources */,
-				97DE5E6528C34CEB008AA464 /* Led Zeppelin - Whole Lotta Love.mp3 in Resources */,
 				97DE5E5328C26E12008AA464 /* Main.storyboard in Resources */,
+				972F070C28D11E24002F2EA3 /* Led Zeppelin - Whole Lotta Love.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
