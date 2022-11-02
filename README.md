@@ -1,8 +1,27 @@
-# LocalMusicApp
+<h1 align="center">
+  What is all about?
+</h1>
 
-Hi everyone!
+LocalMusicApp - it's a test task that I that I cpmlete for <img src="https://planx.one/planx.svg" width="35">
 
-LocalMusicApp is a simple music application that can help you to listen your favourite local tracks.
-You can change tracks on swipe, pushing next or previous buttons or you can pause track on main player screen, in lockscreen or with help of control center.
+Look of this app inspired by YandexMusic App, so you can find simillar things in it.
 
-Thanks for attention!
+There's some special things about it:
+- Background color changes in dependency with whole color of song cover
+- You can listen music in background or with locked screen
+- You can change tracks with help of native Control Center
+- It's my first app where I worked with music in Swift
+- Planning to add: CoreData, language localization, Equalizer, Favourite Songs and etc.
+- Planning to improve: code, animations, UI/UX, GCD & Memory management
+
+<h1 align="center">
+  Technology stack 💻
+</h1>
+
+- MVC
+- UIKit
+- Storyboard for Navigation between screens
+- GestureRecognizers
+- Extensions
+- CollectionView
+- GCD
