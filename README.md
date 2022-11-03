@@ -29,7 +29,7 @@ There's some special things about it:
 <h1 align="center">
   How it looks?
 </h1>
-<div>
+<div align="center">
   <img src="https://user-images.githubusercontent.com/97976090/199568681-6a72f8ea-c4a9-4a26-acfb-653fc63be9ab.png" width="150">
   &nbsp&nbsp
   <img src="https://user-images.githubusercontent.com/97976090/199569460-787e10ab-6a9b-4611-a7c9-c6ee648f0579.png" width="150">
