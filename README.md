@@ -8,7 +8,7 @@ The main requirement for the successful finishing of the task was completion it 
 
 There's some special things about it:
 - Background color changes in dependency with whole color of song cover
-- You can listen music in background or with locked screen
+- You can listen music 🎸 in background or with locked screen
 - You can change tracks with help of native Control Center
 - It's my first app where I worked with music in Swift
 - Planning to add: CoreData, language localization, Equalizer, Favourite Songs and etc.
