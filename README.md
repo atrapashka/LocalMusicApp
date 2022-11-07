@@ -12,7 +12,7 @@ There's some special things about it:
 - You can change tracks with help of native Control Center
 - It's my first app where I worked with music in Swift
 - Planning to add: CoreData, language localization, Equalizer, Favourite Songs and etc.
-- Planning to improve: code, animations, UI/UX, GCD & Memory management
+- Planning to improve: code, animations, update UI, GCD & Memory management
 
 <h1 align="center">
   Technology stack 💻
